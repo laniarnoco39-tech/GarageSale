@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANGKEE STREET GARAGE SALE</title>
+
+    <style>
+        body {
+            background-color: turquoise;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ddd;
+            font-size: 18px;
+        }
+
+        td:nth-child(2), th:nth-child(2) {
+            width: 300px;
+        }
+
+        .thumb {
+            width: 120px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer; /* makes image clickable */
+            margin: 2px;
+        }
+
+        /* GALLERY MODAL */
+        #galleryModal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #galleryImage {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .arrow {
+            color: white;
+            font-size: 60px;
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arrowLeft {
+            left: 30px;
+        }
+
+        .arrowRight {
+            right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+     <h1>PANGKEE STREET GARAGE SALE</h1>
+     <h2>Welcome To The Garage Sale!</h2>
+     <p>We are selling both new and second-hand items below. Please contact us at <b><u>09155447807</b></u> or <b><u> 0993538562</b></u> if interested. Or please message us at facebook for any inquiries. Thank you!
+     </p>
+
+     <!-- ITEMS TABLE -->
+     <table>
+         <tr>
+             <th>Item</th>
+             <th>Photos</th>
+             <th>Category</th>
+             <th>Condition</th>
+             <th>Price</th>
+             <th>Description</th>
+         </tr>
+
+         <!-- ACTUAL ITEMS -->
+         <tr>
+             <td>Antique Piano</td>
+             <td><img 
+                     src="AntiquePiano-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['AntiquePiano-1.jpg','AntiquePiano-2.jpg'],0)">
+                 <img
+                     src="AntiquePiano-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['AntiquePiano-1.jpg','AntiquePiano-2.jpg'],1)">
+             </td>
+             <td>Musical Instruments</td>
+             <td>Used-Fair</td>
+             <td>₱5,000.00</td>
+             <td>Great antique piano for ornamentation. Needs repair or fixing.</td>
+         </tr>
+
+         <tr>
+             <td>Bamboo Box</td>
+             <td><img 
+                     src="BambooBox-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['BambooBox-1.jpg','BambooBox-3.jpg'],0)">
+                 <img
+                     src="BambooBox-3.jpg"
+                     class="thumb"
+                     onclick="openGallery(['BambooBox-1.jpg','BambooBox-3.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Good</td>
+             <td>₱250.00</td>
+             <td>Good for storing items.</td>
+         </tr>
+
+         <tr>
+             <td>Bamboo Couch</td>
+             <td><img 
+                     src="BambooCouch-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['BambooCouch-1.jpg','BambooCouch-2.jpg'],0)">
+                 <img
+                     src="BambooCouch-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['BambooCouch-1.jpg','BambooCouch-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱600.00</td>
+             <td>Couch made of bamboo. Needs repair/fixing.</td>
+         </tr>
+
+         <tr>
+             <td>Brown Sandals</td>
+             <td><img 
+                     src="BrownSandals-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['BrownSandals-1.jpg','BrownSandals-2.jpg'],0)">
+                 <img
+                     src="BrownSandals-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['BrownSandals-1.jpg','BrownSandals-2.jpg'],1)">
+             </td>
+             <td>Shoes</td>
+             <td>Used-Good</td>
+             <td>₱1,500.00</td>
+             <td>Selling Outland Sandals. In very good condition.</td>
+         </tr>
+
+         <tr>
+             <td>Bungee Strap</td>
+             <td><img 
+                     src="BungeeStrap-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['BungeeStrap-1.jpg','BungeeStrap-2.jpg'],0)">
+                 <img
+                     src="BungeeStrap-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['BungeeStrap-1.jpg','BungeeStrap-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Brand New</td>
+             <td>₱200.00</td>
+             <td>Unused 3 pieces bungee straps. Great for holding/packing boxes and other items.</td>
+         </tr>
+
+         <tr>
+             <td>Children Slippers</td>
+             <td><img 
+                     src="ChildrenSlippers-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['ChildrenSlippers-1.jpg','ChildrenSlippers-2.jpg'],0)">
+                 <img
+                     src="ChildrenSlippers-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['ChildrenSlippers-1.jpg','ChildrenSlippers-2.jpg'],1)">
+             </td>
+             <td>Shoes</td>
+             <td>Used-Like New</td>
+             <td>₱150.00</td>
+             <td>Selling children slippers, ₱150.00 each. In great condition.</td>
+         </tr>
+
+         <tr>
+             <td>Christmas Tree</td>
+             <td><img 
+                     src="ChristmasTree-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['ChristmasTree-1.jpg','ChristmasTree-2.jpg'],0)">
+                 <img
+                     src="ChristmasTree-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['ChristmasTree-1.jpg','ChristmasTree-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Good</td>
+             <td>₱1,000.00</td>
+             <td>Selling tall Christmas Tree. In great condition.</td>
+         </tr>
+
+         <tr>
+             <td>Cup Storage</td>
+             <td><img 
+                     src="CupStorage-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['CupStorage-1.jpg','CupStorage-2.jpg'],0)">
+                 <img
+                     src="CupStorage-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['CupStorage-1.jpg','CupStorage-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱100.00</td>
+             <td>Selling cup storage. Great for organizing cups/glasses.</td>
+         </tr>
+
+         <tr>
+             <td>Earphones</td>
+             <td><img 
+                     src="Earphones-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Earphones-1.jpg','Earphones-2.jpg'],0)">
+                 <img
+                     src="Earphones-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Earphones-1.jpg','Earphones-2.jpg'],1)">
+             </td>
+             <td>Accessories</td>
+             <td>Brand New</td>
+             <td>₱100.00</td>
+             <td>Selling 3 earphones, ₱100.00 for each. Never been used.</td>
+         </tr>
+
+         <tr>
+             <td>Electric Guitar & Set</td>
+             <td><img 
+                     src="ElectricGuitar&GearSet-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['ElectricGuitar&GearSet-1.jpg','ElectricGuitar&GearSet-10.jpg'],0)">
+                 <img
+                     src="ElectricGuitar&GearSet-10.jpg"
+                     class="thumb"
+                     onclick="openGallery(['ElectricGuitar&GearSet-1.jpg','ElectricGuitar&GearSet-10.jpg'],1)">
+             </td>
+             <td>Musical Instruments</td>
+             <td>Used-Like New</td>
+             <td>₱50,00.00</td>
+             <td>Bought most from Canada. Includes the gears and set.</td>
+         </tr>
+
+         <tr>
+             <td>Floating Bluetooth Speaker</td>
+             <td><img 
+                     src="FloatingIPX7BluetoothSpeakers-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['FloatingIPX7BluetoothSpeakers-1.jpg','FloatingIPX7BluetoothSpeakers-2.jpg'],0)">
+                 <img
+                     src="FloatingIPX7BluetoothSpeakers-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['FloatingIPX7BluetoothSpeakers-1.jpg','FloatingIPX7BluetoothSpeakers-2.jpg'],1)">
+             </td>
+             <td>Electronics</td>
+             <td>Brand New</td>
+             <td>₱3,000.00</td>
+             <td>Floating bluetooth speakers bought from Canada. Never been used.</td>
+         </tr>
+
+         <tr>
+             <td>Frisbee</td>
+             <td><img 
+                     src="Frisbee-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Frisbee-1.jpg','Frisbee-2.jpg'],0)">
+                 <img
+                     src="Frisbee-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Frisbee-1.jpg','Frisbee-2.jpg'],1)">
+             </td>
+             <td>Outdoor Toys</td>
+             <td>Brand New</td>
+             <td>₱250.00</td>
+             <td>Selling 2 frisbees, ₱250.00 for each. Great for playing outdoors.</td>
+         </tr>
+
+         <tr>
+             <td>Funeral Ribbons & Pins</td>
+             <td><img 
+                     src="FuneralRibbonsPins-2.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['FuneralRibbonsPins-2.jpg','FuneralRibbonsPins-4.jpg'],0)">
+                 <img
+                     src="FuneralRibbonsPins-4.jpg"
+                     class="thumb"
+                     onclick="openGallery(['FuneralRibbonsPins-2.jpg','FuneralRibbonsPins-4.jpg'],1)">
+             </td>
+             <td>Arts & Crafts</td>
+             <td>Brand New</td>
+             <td>₱300.00</td>
+             <td>Selling funeral ribbons & pins for ₱300.00 for each.</td>
+         </tr>
+
+         <tr>
+             <td>Head & Hair Basin</td>
+             <td><img 
+                     src="Head&HairBasin-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Head&HairBasin-1.jpg','Head&HairBasin-2.jpg'],0)">
+                 <img
+                     src="Head&HairBasin-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Head&HairBasin-1.jpg','Head&HairBasin-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Brand New</td>
+             <td>₱900.00</td>
+             <td>Never been used. Useful for washing head/hair.</td>
+         </tr>
+
+         <tr>
+             <td>Lab Gown</td>
+             <td><img 
+                     src="LabGown-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['LabGown-1.jpg','LabGown-2.jpg'],0)">
+                 <img
+                     src="LabGown-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['LabGown-1.jpg','LabGown-2.jpg'],1)">
+             </td>
+             <td>Clothes</td>
+             <td>Used-Like New</td>
+             <td>₱500.00</td>
+             <td>In great condition. Useful for doing lab activities.</td>
+         </tr>
+
+         <tr>
+             <td>Large Umbrellas</td>
+             <td><img 
+                     src="LargeUmbrellas-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['LargeUmbrellas-1.jpg','LargeUmbrellas-2.jpg'],0)">
+                 <img
+                     src="LargeUmbrellas-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['LargeUmbrellas-1.jpg','LargeUmbrellas-2.jpg'],1)">
+             </td>
+             <td>Accessories</td>
+             <td>Brand New</td>
+             <td>₱300.00</td>
+             <td>Large umbrellas in great condition. Never been used.</td>
+         </tr>
+
+         <tr>
+             <td>Leg Roll</td>
+             <td><img 
+                     src="LegRoll-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['LegRoll-1.jpg','LegRoll-2.jpg'],0)">
+                 <img
+                     src="LegRoll-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['LegRoll-1.jpg','LegRoll-2.jpg'],1)">
+             </td>
+             <td>Accessories</td>
+             <td>Used-Like New</td>
+             <td>₱900.00</td>
+             <td>Useful for leg positioning for immobility.</td>
+         </tr>
+
+         <tr>
+             <td>Medicine Boxes</td>
+             <td><img 
+                     src="MedicineBoxes-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['MedicineBoxes-1.jpg','MedicineBoxes-2.jpg'],0)">
+                 <img
+                     src="MedicineBoxes-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['MedicineBoxes-1.jpg','MedicineBoxes-2.jpg'],1)">
+             </td>
+             <td>Accessories</td>
+             <td>Used-Like New</td>
+             <td>₱400.00</td>
+             <td>Selling Medicine Boxes for 3 items. In good condition.</td>
+         </tr>
+
+         <tr>
+             <td>MedTech Uniform (Female)</td>
+             <td><img 
+                     src="MedTechFemaleUniform-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['MedTechFemaleUniform-1.jpg','MedTechFemaleUniform-2.jpg'],0)">
+                 <img
+                     src="MedTechFemaleUniform-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['MedTechFemaleUniform-1.jpg','MedTechFemaleUniform-2.jpg'],1)">
+             </td>
+             <td>Clothes</td>
+             <td>Used-Fair</td>
+             <td>₱400.00</td>
+             <td>In good condition. Pants not available.</td>
+         </tr>
+
+         <tr>
+             <td>Microwave Oven</td>
+             <td><img 
+                     src="MicrowaveOven-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['MicrowaveOven-1.jpg','MicrowaveOven-2.jpg'],0)">
+                 <img
+                     src="MicrowaveOven-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['MicrowaveOven-1.jpg','MicrowaveOven-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱200.00</td>
+             <td>Selling Microwave Oven. Needs repair/fixing. Some parts are usable.</td>
+         </tr>
+
+         <tr>
+             <td>Microwave Turntable Tray</td>
+             <td><img 
+                     src="MicrowaveTurntableTray-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['MicrowaveTurntableTray-1.jpg','MicrowaveTurntableTray-2.jpg'],0)">
+                 <img
+                     src="MicrowaveTurntableTray-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['MicrowaveTurntableTray-1.jpg','MicrowaveTurntableTray-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Good</td>
+             <td>₱100.00</td>
+             <td>Selling Microwave Turntable Tray. In great condition.</td>
+         </tr>
+
+         <tr>
+             <td>Mini Fan</td>
+             <td><img 
+                     src="MiniFan-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['MiniFan-1.jpg','MiniFan-2.jpg'],0)">
+                 <img
+                     src="MiniFan-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['MiniFan-1.jpg','MiniFan-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱250.00</td>
+             <td>Selling Rechargeable Mini Fan. Useful during outages/no electricity.</td>
+         </tr>
+
+         <tr>
+             <td>Old Philippine Coins</td>
+             <td><img 
+                     src="OldCoins-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['OldCoins-1.jpg','OldCoins-2.jpg'],0)">
+                 <img
+                     src="OldCoins-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['OldCoins-1.jpg','OldCoins-2.jpg'],1)">
+             </td>
+             <td>Money & Coins</td>
+             <td>Used-Fair</td>
+             <td>₱50.00</td>
+             <td>Selling Old Philippine Coins. Good for coin collectors.</td>
+         </tr>
+
+         <tr>
+             <td>Peeler</td>
+             <td><img 
+                     src="Peeler-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Peeler-1.jpg','Peeler-1.jpg'],0)">
+                 <img
+                     src="Peeler-1.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Peeler-1.jpg','Peeler-1.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Brand New</td>
+             <td>₱300.00</td>
+             <td>Never been used peeler.</td>
+         </tr>
+
+         <tr>
+             <td>Pet Cage (Large)</td>
+             <td><img 
+                     src="CatCage-LargeBlack-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['CatCage-LargeBlack-1.jpg','CatCage-LargeBlack-2.jpg'],0)">
+                 <img
+                     src="CatCage-LargeBlack-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['CatCage-LargeBlack-1.jpg','CatCage-LargeBlack-2.jpg'],1)">
+             </td>
+             <td>Pets</td>
+             <td>Used-Like New</td>
+             <td>₱2,000.00</td>
+             <td>Large pet cage useful for your pets. In great condition.</td>
+         </tr>
+
+         <tr>
+             <td>Pet Cage (Small)</td>
+             <td><img 
+                     src="CatCage-PawSmart-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['CatCage-PawSmart-1.jpg','CatCage-PawSmart-2.jpg'],0)">
+                 <img
+                     src="CatCage-PawSmart-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['CatCage-PawSmart-1.jpg','CatCage-PawSmart-2.jpg'],1)">
+             </td>
+             <td>Pets</td>
+             <td>Used-Good</td>
+             <td>₱500.00</td>
+             <td>Small pet cage useful for your pets. In great condition.</td>
+         </tr>
+
+         <tr>
+             <td>Pet Leash</td>
+             <td><img 
+                     src="PetLeash-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['PetLeash-1.jpg','PetLeash-2.jpg'],0)">
+                 <img
+                     src="PetLeash-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['PetLeash-1.jpg','PetLeash-2.jpg'],1)">
+             </td>
+             <td>Pets</td>
+             <td>Used-Like New</td>
+             <td>₱100.00</td>
+             <td>In great condition pet leashes, ₱100.00 each.</td>
+         </tr>
+
+         <tr>
+             <td>Pressure Cooker</td>
+             <td><img 
+                     src="PressureCooker-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['PressureCooker-1.jpg','PressureCooker-2.jpg'],0)">
+                 <img
+                     src="PressureCooker-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['PressureCooker-1.jpg','PressureCooker-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Brand New</td>
+             <td>₱3,000.00</td>
+             <td>Never been used pressure cooker. Sonio Brand.</td>
+         </tr>
+
+         <tr>
+             <td>Push Chopper</td>
+             <td><img 
+                     src="PushChopper-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['PushChopper-1.jpg','PushChopper-2.jpg'],0)">
+                 <img
+                     src="PushChopper-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['PushChopper-1.jpg','PushChopper-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Brand New</td>
+             <td>₱300.00</td>
+             <td>Never been used pressure cooker. Sonio Brand.</td>
+         </tr>
+
+         <tr>
+             <td>Red Organizer</td>
+             <td><img 
+                     src="RedOrganizer-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['RedOrganizer-1.jpg','RedOrganizer-2.jpg'],0)">
+                 <img
+                     src="RedOrganizer-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['RedOrganizer-1.jpg','RedOrganizer-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Good</td>
+             <td>₱250.00</td>
+             <td>In good condition red organizer for 2 compartments.</td>
+         </tr>
+
+         <tr>
+             <td>Tent</td>
+             <td><img 
+                     src="Tent-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Tent-1.jpg','Tent-2.jpg'],0)">
+                 <img
+                     src="Tent-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Tent-1.jpg','Tent-2.jpg'],1)">
+             </td>
+             <td>Sports</td>
+             <td>Used-Good</td>
+             <td>₱300.00</td>
+             <td>In good condition tent, useful for camping.</td>
+         </tr>
+
+         <tr>
+             <td>Tumblers</td>
+             <td><img 
+                     src="Tumblers-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['Tumblers-1.jpg','Tumblersent-2.jpg'],0)">
+                 <img
+                     src="Tumblers-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['Tumblers-1.jpg','Tumblers-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Like New</td>
+             <td>₱150.00</td>
+             <td>Selling tumblers, in great condition like new. ₱150.00 each tumbler.</td>
+         </tr>
+
+         <tr>
+             <td>Utensil Divider</td>
+             <td><img 
+                     src="UtensilDivider-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['UtensilDivider-1.jpg','UtensilDivider-2.jpg'],0)">
+                 <img
+                     src="UtensilDivider-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['UtensilDivider-1.jpg','UtensilDivider-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Good</td>
+             <td>₱100.00</td>
+             <td>Selling utensil divider in great condition. Useful for separating spoons, forks, knifes.</td>
+         </tr>
+
+         <tr>
+             <td>Violin Bow</td>
+             <td><img 
+                     src="ViolinBowBrown-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['ViolinBowBrown-1.jpg','ViolinBowBrown-2.jpg'],0)">
+                 <img
+                     src="ViolinBowBrown-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['ViolinBowBrown-1.jpg','ViolinBowBrown-2.jpg'],1)">
+             </td>
+             <td>Musical Instruments</td>
+             <td>Used-Fair</td>
+             <td>₱100.00</td>
+             <td>Selling violin bow in good condition. Useful for violin players.</td>
+         </tr>
+
+         <tr>
+             <td>Water Jug</td>
+             <td><img 
+                     src="WaterJug-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['WaterJug-1.jpg','WaterJug-2.jpg'],0)">
+                 <img
+                     src="WaterJug-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['WaterJug-1.jpg','WaterJug-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱500.00</td>
+             <td>Useful water jug for drinking water or as a cooler.</td>
+         </tr>
+
+         <tr>
+             <td>White Nursing Uniform Set</td>
+             <td><img 
+                     src="WhiteNursingUniformSet-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['WhiteNursingUniformSet-1.jpg','WhiteNursingUniformSet-2.jpg'],0)">
+                 <img
+                     src="WhiteNursingUniformSet-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['WhiteNursingUniformSet-1.jpg','WhiteNursingUniformSet-2.jpg'],1)">
+             </td>
+             <td>Clothes</td>
+             <td>Used-Fair</td>
+             <td>₱800.00</td>
+             <td>White nursing uniform in great condition. Useful for male students or professionals.</td>
+         </tr>
+
+         <tr>
+             <td>White Organizer</td>
+             <td><img 
+                     src="WhiteOrganizer-1.jpg" 
+                     class="thumb"
+                     onclick="openGallery(['WhiteOrganizer-1.jpg','WhiteOrganizer-2.jpg'],0)">
+                 <img
+                     src="WhiteOrganizer-2.jpg"
+                     class="thumb"
+                     onclick="openGallery(['WhiteOrganizer-1.jpg','WhiteOrganizer-2.jpg'],1)">
+             </td>
+             <td>Household</td>
+             <td>Used-Fair</td>
+             <td>₱300.00</td>
+             <td>In great condition, useful for storing items like sewing materials.</td>
+         </tr>
+
+     </table>
+
+     <!-- GALLERY MODAL -->
+     <div id="galleryModal">
+         <span class="close-btn" onclick="closeGallery()">X</span>
+         <span class="arrow arrowLeft" onclick="changeImage(-1)">❮</span>
+         <img id="galleryImage" src="">
+         <span class="arrow arrowRight" onclick="changeImage(1)">❯</span>
+     </div>
+
+     <script>
+         let galleryImages = [];
+         let currentIndex = 0;
+
+         function openGallery(images, index) {
+             galleryImages = images;
+             currentIndex = index;
+             document.getElementById("galleryImage").src = galleryImages[currentIndex];
+             document.getElementById("galleryModal").style.display = "flex";
+         }
+
+         function closeGallery() {
+             document.getElementById("galleryModal").style.display = "none";
+         }
+
+         function changeImage(direction) {
+             currentIndex += direction;
+             if (currentIndex < 0) currentIndex = galleryImages.length -1;
+             if (currentIndex >= galleryImages.length) currentIndex = 0;
+             document.getElementById("galleryImage").src = galleryImages[currentIndex];
+        }
+     </script>
+
+</body>
+</html>
